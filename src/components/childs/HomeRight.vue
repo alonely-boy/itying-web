@@ -44,7 +44,9 @@
         <img :src="item.img" alt=""  @click="adClick(item)"></img>
       </el-carousel-item>
     </el-carousel>
+    <div class="beian"><span style="marginRight:20px;cursor:pointer;" @click="beian">鲁ICP备2020034399号</span> &copy;2020 大学IT营</div>
       </div>
+      
       
       
       
@@ -122,6 +124,9 @@ export default {
       // console.log(data)
       this.ad = data
     },
+    beian(){
+      window.open('http://beian.miit.gov.cn', '_blank');
+    },
     adClick(item){
       window.open(item.link, '_blank');
     },
@@ -196,6 +201,11 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style lang="scss" scoped>
 .ad{
+  .beian{
+    color:#8590a6;
+    font-size: 14px;
+    cursor:default
+  }
   border: 1px solid #eee;
   position: sticky;
   top: 60px;
@@ -207,6 +217,7 @@ export default {
    width: 100%;
   }
   .text{
+    z-index: 100;
     font-size: 14px;
     text-align: center;
     background: rgba(0,0,0,0.5);

@@ -118,7 +118,7 @@
         <el-form-item label="头像上传">
           <el-upload
             class="avatar-uploader"
-            action='http://localhost:3000/server/api/upload'
+            action='http://81.70.59.91:3000/server/api/upload'
             :show-file-list="false"
             :on-success="handleAvatarSuccess"
             :before-upload="beforeAvatarUpload"

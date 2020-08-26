@@ -57,7 +57,7 @@ const routes = [
 ]
 
 const router = new VueRouter({
-  mode: 'history',
+  mode: 'hash',
   base: process.env.BASE_URL,
   routes
 })
@@ -73,7 +73,7 @@ router.beforeEach((to,from,next)=>{
     }
   }
   if(!judge&&!localStorage.token){
-    this.$message.warning('请先登录')
+    Vue.prototype.$message.warning('请先登录')
     next('/login')
   }else{
     next()
