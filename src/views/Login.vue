@@ -189,7 +189,7 @@ export default {
     right: 0;
     height: 100px;
   }
-  height: 350px;
+  height: 370px;
   width: 450px;
   position: absolute;
   // background-image: url(~@/assets/img/樱花背景.jpg);
@@ -215,6 +215,16 @@ export default {
     padding: 5px;
     background: white;
     left: 50%;
+  }
+}
+@media screen and(max-width:700px){
+  .container{
+    width: 100% !important;
+    top: 45vh;
+
+  }
+  .content{
+    display: none;
   }
 }
 </style>

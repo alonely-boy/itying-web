@@ -1,13 +1,14 @@
 <template>
   <div class="container">
-    <nav-bar :subtitle="'改文章'"></nav-bar>
+    <nav-bar :subtitle="'写文章'"></nav-bar>
     <div class="content">
       <div class="help">
         <el-button type="text" @click="dialogVisible = true">帮助</el-button>
-
-        <el-dialog title="帮助" :modal="false" :visible.sync="dialogVisible" width="50%">
+        <el-dialog title="帮助" :modal="false" :visible.sync="dialogVisible" :width="mobile?'95%':'50%'">
           <div>
             <ul style="color:#e83e8c">
+              <li>当你切换页面时，草稿会存到浏览器缓存里 (并不保险)</li>
+              <br />
               <li>文章标题为2-30个字</li>
               <br />
               <li>文章二级分类（可选）为自定义标签，最多定义4个</li>
@@ -21,11 +22,10 @@
             <el-button type="primary" @click="dialogVisible = false">确 定</el-button>
           </span>
         </el-dialog>
-        
       </div>
-       <div class="xieyi">
+      <div class="xieyi">
         <el-button type="text" @click="dialogVisible1 = true">用户协议</el-button>
-        <el-dialog title="用户协议" :modal="false" :visible.sync="dialogVisible1" width="50%">
+        <el-dialog title="用户协议" :modal="false" :visible.sync="dialogVisible1" :width="mobile?'95%':'50%'">
           <div>
             <ul style="color:#e83e8c">
               <li>用户不得发布色情，暴力等各种法律禁止的内容</li>
@@ -40,7 +40,7 @@
           </span>
         </el-dialog>
       </div>
-      <el-form label-position="left" :model="form" label-width="80px" :rules="rules" ref="ruleForm">
+      <el-form :label-position="mobile?'top':'left'" :model="form" label-width="80px" :rules="rules" ref="ruleForm">
         <el-form-item label="文章标题" prop="title">
           <el-input v-model="form.title"></el-input>
         </el-form-item>
@@ -87,10 +87,10 @@
           </el-upload>
         </el-form-item>
         <el-form-item label="文章内容" prop="content" label-width="80px">
-          <vue-editor useCustomImageHandler @image-added="handleImageAdded" v-model="form.content"></vue-editor>
+          <vue-editor  useCustomImageHandler @image-added="handleImageAdded" v-model="form.content"></vue-editor>
         </el-form-item>
         <el-form-item>
-          <el-button type="primary" @click="onSubmit">修改完成</el-button>
+          <el-button type="primary" @click="onSubmit">立即发布</el-button>
           <el-button @click="cancle" style="float:right">清空</el-button>
         </el-form-item>
       </el-form>
@@ -105,8 +105,9 @@ export default {
   name: "Write",
   data() {
     return {
-      dialogVisible1:false,
+      mobile:false,
       dialogVisible: false,
+      dialogVisible1: false,
       rules: {
         title: [
           { required: true, message: "请输入文章标题", trigger: "blur" },
@@ -144,13 +145,14 @@ export default {
   },
   methods: {
     cancle() {
-      this.$confirm("确定清空当前内容", "确认操作", {
+      this.$confirm("确定清空当前内容和草稿?", "确认操作", {
         confirmButtonText: "确定",
         cancelButtonText: "取消",
         type: "warning",
       })
         .then(() => {
           this.form.icon = "";
+          localStorage.form = "";
           this.$refs.ruleForm.resetFields();
         })
         .catch(() => {});
@@ -178,6 +180,15 @@ export default {
     handleAvatarSuccess(res) {
       this.form.icon = res.url;
     },
+    async fetchData() {
+      if (!this.$store.state.admin) {
+        const { data } = await this.$http.get(`${this.$route.path}`);
+        this.form = data;
+      } else {
+        const { data } = await this.$http.put(`${this.$route.path}`);
+        this.form = data;
+      }
+    },
     beforeAvatarUpload(file) {
       const isJPG = file.type === "image/jpeg" || file.type === "image/png";
       const isLt2M = file.size / 1024 / 1024 <= 2;
@@ -194,7 +205,7 @@ export default {
     async onSubmit() {
       this.$refs.ruleForm.validate(async (valid) => {
         if (!valid) return;
-        this.$confirm("确定修改内容?", "确认操作", {
+        this.$confirm("确定发布?", "确认操作", {
           confirmButtonText: "确定",
           cancelButtonText: "取消",
           type: "warning",
@@ -204,6 +215,7 @@ export default {
             const res = await this.$http.post(`${this.$route.path}`, this.form);
             this.$message.success("修改成功");
             this.form.icon = "";
+            localStorage.form = "";
             this.$refs.ruleForm.resetFields();
             this.$router.push("/");
           })
@@ -231,38 +243,45 @@ export default {
         resetUploader();
       }
     },
-    async fetchData() {
-      if (!this.$store.state.admin) {
-        const { data } = await this.$http.get(`${this.$route.path}`);
-        this.form = data;
-      } else {
-        const { data } = await this.$http.put(`${this.$route.path}`);
-        this.form = data;
-      }
-    },
   },
   components: {
     NavBar,
     VueEditor,
   },
-  created() {
-    // console.log(this.$route)
-    this.fetchData();
+  created(){
+    
+    if(window.innerWidth<=700){
+      this.mobile=true
+      this.$message.warning('不建议在移动端发布或者修改文章')
+    }else{
+      this.mobile = false
+    }
+    this.fetchData()
+  },
+  mounted() {
+    if (localStorage.form) {
+      this.form = JSON.parse(localStorage.form);
+    }
+  },
+  beforeRouteLeave(to, from, next) {
+    if (this.form.title || this.form.content)
+      window.localStorage.setItem("form", JSON.stringify(this.form));
+    next();
   },
 };
 </script>
 
 <style lang="scss" scoped>
-.xieyi {
+.help {
   position: absolute;
-  left: 10px;
+  right: 10px;
   top: 5px;
   color: rgb(33, 145, 179);
   font-size: 20px;
 }
-.help {
+.xieyi {
   position: absolute;
-  right: 10px;
+  left: 10px;
   top: 5px;
   color: rgb(33, 145, 179);
   font-size: 20px;
@@ -318,5 +337,10 @@ export default {
 .useravatar {
   max-width: 178px;
   max-height: 178px;
+}
+@media screen and(max-width:700px){
+  .content{
+    width: 95vw;
+  }
 }
 </style>

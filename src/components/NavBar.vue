@@ -1,20 +1,20 @@
 <template>
   <div class="container">
     <div class="navbar">
-      <el-tooltip class="item" effect="light" content="回到首页" placement="bottom">
-        <div id="a" @click="logoClick">大学IT营</div>
+      <el-tooltip v-if="!mobile" class="item" effect="light" content="回到首页" placement="bottom">
+        <div id="a" @click="logoClick"></div>
       </el-tooltip>
+      <div id="a" v-else @click="logoClick"></div>
       <div id="search">
         欢迎你 <span>{{form.userName}}</span>
       </div>
       <div class="subtitle">{{subtitle}}</div>
-      <div></div>
       <el-button type="text" v-preventClick v-if="$store.state.admin" @click="remove">清理内存</el-button type="text">
-      <div v-else></div>
+      <!-- <div v-else></div> -->
        <el-tooltip class="item" effect="light" content="暂时没有通知哦" placement="bottom">
        <svg
         t="1595859437852"
-        class="icon"
+        class="icon aaa"
         viewBox="0 0 1024 1024"
         version="1.1"
         xmlns="http://www.w3.org/2000/svg"
@@ -31,7 +31,7 @@
         v-if="happy"
         @click="toggle"
         t="1596888906235"
-        class="icon"
+        class="icon aaa"
         viewBox="0 0 1024 1024"
         version="1.1"
         xmlns="http://www.w3.org/2000/svg"
@@ -50,7 +50,7 @@
         v-else
         @click="toggle"
         t="1596889151556"
-        class="icon"
+        class="icon aaa"
         viewBox="0 0 1024 1024"
         version="1.1"
         xmlns="http://www.w3.org/2000/svg"
@@ -109,6 +109,7 @@
       :visible.sync="dialogFormVisible"
       :modal-append-to-body="false"
       :close-on-click-modal="false"
+      :width="mobile?'90%':'50%'"
       :before-close="commentClose"
     >
       <el-form :model="form" style="height:300px">
@@ -146,9 +147,15 @@ export default {
   },
   created(){
     this.getUser()
+    if(window.innerWidth<=700){
+      this.mobile = true
+    }else{
+      this.mobile = false
+    }
   },
   data() {
     return {
+      mobile:false,
       dialogFormVisible: false,
       imageUrl:'',
       form: {
@@ -180,9 +187,21 @@ export default {
         .catch(() => {});
     },
     editcenterClick(){
+      if(this.mobile){
+           window.scrollTo({
+        top: 20,
+        behavior: "smooth",
+      });
+      }
       this.$router.push('editcenter')
     },
     starClick(){
+      if(this.mobile){
+           window.scrollTo({
+        top: 20,
+        behavior: "smooth",
+      });
+      }
       this.$router.push('star')
     },
     async getUser(){
@@ -221,7 +240,14 @@ export default {
       this.$router.push("/login");
     },
     logoClick() {
+       if(this.mobile){
+         window.scrollTo({
+        top: 0,
+        behavior: "smooth",
+      });
+      }
       this.$router.push("/");
+     
     },
     async userset() {
       this.getUser()
@@ -256,6 +282,7 @@ export default {
 
 
 <style lang="scss" scoped >
+
 .useravatar{
   max-width: 178px;
   max-height: 178px;
@@ -305,6 +332,7 @@ export default {
   color: #8a8a8a;
 }
 .container {
+  border-radius: 5px;
   min-width: 1032px;
   top: 0;
   position: fixed;
@@ -314,10 +342,11 @@ export default {
   z-index: 99;
 }
 #a {
-  font-size: 32px;
-  font-family: "楷体";
+  background: url('~@/assets/img/艺术字.png');
+  height: 100%;
+  background-size: cover;
   cursor: pointer;
-  width: 150px;
+  width: 250px;
   color: rgb(241, 23, 223);
 }
 #search {
@@ -326,7 +355,7 @@ export default {
   width: 250px;
   overflow: hidden;
   height: 40px;
-  
+  font-size: 16px;
   white-space: nowrap;
   text-overflow: ellipsis;
   span{
@@ -347,5 +376,21 @@ export default {
 .avatar {
   width: 40px;
   height: 40px;
+}
+@media screen and(max-width: 700px){
+  .container{
+    width: 100%;
+    min-width: 0px;
+  }
+  .navbar{
+    
+    width: 100%;
+  }
+  #search,.subtitle,.aaa{
+    display: none;
+  }
+  .navbar{
+    justify-content: space-around;
+  }
 }
 </style>

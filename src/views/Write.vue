@@ -4,7 +4,7 @@
     <div class="content">
       <div class="help">
         <el-button type="text" @click="dialogVisible = true">帮助</el-button>
-        <el-dialog title="帮助" :modal="false" :visible.sync="dialogVisible" width="50%">
+        <el-dialog title="帮助" :modal="false" :visible.sync="dialogVisible" :width="mobile?'95%':'50%'">
           <div>
             <ul style="color:#e83e8c">
               <li>当你切换页面时，草稿会存到浏览器缓存里 (并不保险)</li>
@@ -25,7 +25,7 @@
       </div>
       <div class="xieyi">
         <el-button type="text" @click="dialogVisible1 = true">用户协议</el-button>
-        <el-dialog title="用户协议" :modal="false" :visible.sync="dialogVisible1" width="50%">
+        <el-dialog title="用户协议" :modal="false" :visible.sync="dialogVisible1" :width="mobile?'95%':'50%'">
           <div>
             <ul style="color:#e83e8c">
               <li>用户不得发布色情，暴力等各种法律禁止的内容</li>
@@ -40,7 +40,7 @@
           </span>
         </el-dialog>
       </div>
-      <el-form label-position="left" :model="form" label-width="80px" :rules="rules" ref="ruleForm">
+      <el-form :label-position="mobile?'top':'left'" :model="form" label-width="80px" :rules="rules" ref="ruleForm">
         <el-form-item label="文章标题" prop="title">
           <el-input v-model="form.title"></el-input>
         </el-form-item>
@@ -87,7 +87,7 @@
           </el-upload>
         </el-form-item>
         <el-form-item label="文章内容" prop="content" label-width="80px">
-          <vue-editor useCustomImageHandler @image-added="handleImageAdded" v-model="form.content"></vue-editor>
+          <vue-editor  useCustomImageHandler @image-added="handleImageAdded" v-model="form.content"></vue-editor>
         </el-form-item>
         <el-form-item>
           <el-button type="primary" @click="onSubmit">立即发布</el-button>
@@ -105,6 +105,7 @@ export default {
   name: "Write",
   data() {
     return {
+      mobile:false,
       dialogVisible: false,
       dialogVisible1: false,
       rules: {
@@ -238,6 +239,14 @@ export default {
     NavBar,
     VueEditor,
   },
+  created(){
+    if(window.innerWidth<=700){
+      this.mobile=true
+      this.$message.warning('不建议在移动端发布或者修改文章')
+    }else{
+      this.mobile = false
+    }
+  },
   mounted() {
     if (localStorage.form) {
       this.form = JSON.parse(localStorage.form);
@@ -317,5 +326,10 @@ export default {
 .useravatar {
   max-width: 178px;
   max-height: 178px;
+}
+@media screen and(max-width:700px){
+  .content{
+    width: 95vw;
+  }
 }
 </style>

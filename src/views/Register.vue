@@ -33,7 +33,7 @@
         <el-input
           prefix-icon="el-icon-lock"
           v-model.trim="registerForm.password"
-          placeholder="密码长度为2-15位"
+          placeholder="密码长度为6-15位"
           show-password
         ></el-input>
       </el-form-item>
@@ -240,6 +240,16 @@ export default {
     padding: 5px;
     background: white;
     left: 50%;
+  }
+}
+@media screen and(max-width:700px){
+  .container{
+    width: 100% !important;
+    top: 55vh;
+    height: 450px;
+  }
+  .content{
+    display: none;
   }
 }
 </style>

@@ -207,7 +207,21 @@ export default {
 
     .time {
       width: 200px;
+       white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
     }
+  }
+}
+@media screen and(max-width:800px){
+  .picture,.category{
+    display: none;
+  }
+  .footer{
+    text-align: center;
+  }
+  .time{
+    width: 100px !important;
   }
 }
 </style>

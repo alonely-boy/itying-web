@@ -4,7 +4,7 @@
       <div class="title" >收藏夹</div>
       <article-item :articlesList="content">
         <template v-slot:default="a">
-          <el-button type="danger" size="mini" @click.stop="remove(a.data)">移除</el-button>
+          <el-button type="danger" style="padding:5px" size="mini" @click.stop="remove(a.data)">移除</el-button>
         </template>
       </article-item>
     </el-card>
@@ -77,5 +77,12 @@ export default {
   color: orange;
   padding-bottom: 20px;
   border-bottom: 1px solid #eee;
+}
+@media screen and (max-width:700px){
+  .contain{
+    width: 96vw;
+    min-height: 400px;
+    padding-left: 3vw !important;
+  }
 }
 </style>

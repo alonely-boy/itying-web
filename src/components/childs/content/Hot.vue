@@ -8,7 +8,7 @@
       :current-page="queryInfo.pagenum"
       :page-sizes="[3, 5, 8, 10]"
       :page-size="queryInfo.pagesize"
-      layout="total,sizes, prev, pager, next, jumper"
+      :layout="layout"
       :total="total"
       background
     ></el-pagination>
@@ -23,6 +23,7 @@ export default {
   },
   data() {
     return {
+      layout: "total,sizes, prev, pager, next, jumper",
       total: 0,
       queryInfo: {
         // 当前页数
@@ -35,6 +36,9 @@ export default {
   },
   created() {
     this.fetchData();
+    if (window.outerWidth <= 700) {
+      this.layout = "total,prev,next, jumper";
+    }
   },
   methods: {
     // 监听 pagesize改变的事件
@@ -45,7 +49,12 @@ export default {
     },
     // 监听 页码值 改变事件
     handleCurrentChange(newSize) {
-      // console.log(newSize)
+      if (window.innerWidth <= 700) {
+        window.scrollTo({
+          top: 30,
+          behavior: "smooth",
+        });
+      }
       this.queryInfo.pagenum = newSize;
       this.fetchData();
     },

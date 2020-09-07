@@ -59,7 +59,7 @@
       :modal="false"
       :close-on-click-modal="false"
       :before-close="commentClose"
-      width="30%"
+      :width="mobile?'95%':'500px'"
     >
       <el-form :model="form" style="height:140px">
         <el-form-item label="管理账号" label-width="70px">
@@ -81,7 +81,7 @@
       :close-on-click-modal="false"
       :before-close="commentClose2"
       
-      width="50%"
+      :width="mobile?'95%':'500px'"
     >
       <el-form :model="form2" style="height:140px">
         <el-form-item label="反馈内容" label-width="70px">
@@ -101,9 +101,15 @@ export default {
   created(){
     this.fetchData()
     this.fetchAD()
+    if(window.innerWidth <=700){
+      this.mobile = true
+    }else{
+      this.mobile = false
+    }
   },
   data(){
     return {
+      mobile:false,
       ad:[],
       agree:'暂无',
       article:'暂无',
@@ -130,8 +136,21 @@ export default {
     adClick(item){
       window.open(item.link, '_blank');
     },
-    myClick(){
-      this.$router.push('/article5f38f9ef5c3c0312cc8d6a8d')
+    async myClick(){
+        await this.$router.push('/')
+     
+        await this.$router.push('/article5f38f9ef5c3c0312cc8d6a8d')
+      //   this.mobile=true
+      //   window.scrollTo({
+      //   top: 20,
+      //   behavior: "smooth",
+      // });
+      
+      //  window.scrollTo({
+      //   top: 20,
+      //   behavior: "smooth",
+      // });
+      
     },
     async confirm2(){
       
@@ -157,6 +176,12 @@ export default {
       this.dialogFormVisible2 = false
     },
     writeCenter(){
+      if(this.mobile){
+           window.scrollTo({
+        top: 20,
+        behavior: "smooth",
+      });
+      }
       this.$router.push('/editcenter')
     },
     async fetchData(){
@@ -186,12 +211,30 @@ export default {
       this.dialogFormVisible = false
     },
     writeArticle(){
+      if(this.mobile){
+           window.scrollTo({
+        top: 20,
+        behavior: "smooth",
+      });
+      }
       this.$router.push('/write')
     },
     star(){
+      if(this.mobile){
+           window.scrollTo({
+        top: 20,
+        behavior: "smooth",
+      });
+      }
       this.$router.push('/star')
     },
     edit(){
+      if(this.mobile){
+           window.scrollTo({
+        top: 20,
+        behavior: "smooth",
+      });
+      }
       this.$router.push('/editcenter')
     }
   }
@@ -273,6 +316,13 @@ export default {
         color:rgb(32, 207, 91)
       }
     }
+  }
+}
+@media screen and(max-width:700px){
+  .right{
+    margin-top: 15px;
+    width: 97vw;
+    padding-left: 3vw;
   }
 }
 </style>

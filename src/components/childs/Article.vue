@@ -6,7 +6,7 @@
           <img :src="writer.avatar" />
         </div>
         <div class="name">{{writer.userName}}</div>
-        <div v-if="$store.state.admin" style="float:right">
+        <div v-if="$store.state.admin" style="float:right" class="ope">
           <el-button type="text" class="edit" @click="editClick" v-preventClick>
             <i class="el-icon-edit"></i>编辑
           </el-button>
@@ -14,7 +14,7 @@
             <i class="el-icon-delete"></i>删除
           </el-button>
         </div>
-        <div v-else style="float:right">
+        <div v-else style="float:right" class="ope">
           <el-button type="text" class="agree" @click="agreeClick" v-preventClick>
             <i class="el-icon-caret-top"></i>点赞
           </el-button>
@@ -23,8 +23,8 @@
           </el-button>
         </div>
       </div>
-      <div class="title">{{article.title}}</div>
-      <div class="subtitle">
+      <div class="title1">{{article.title}}</div>
+      <div class="subtitle1">
         <div class="categorys">
           <div class="category">{{article.category.value}}</div>
           <div
@@ -50,7 +50,7 @@
       </div>
       <div class="comment">
         <div class="comment-content" v-for="(item,index) in article.comment">
-          <div class="left">
+          <div class="left1">
             <img :src="item.user.avatar" alt width="40px" height="100%" />
           </div>
           <div class="right">
@@ -89,6 +89,7 @@
       :visible.sync="dialogFormVisible"
       :close-on-click-modal="false"
       :before-close="commentClose"
+      :width="mobile?'95%':'500px'"
     >
       <el-form :model="comment" :rules="rules" ref="commentForm">
         <el-form-item prop="value">
@@ -115,6 +116,7 @@ export default {
   name: "Article",
   data() {
     return {
+      mobile:false,
       removeObj: {},
       huifuObj: {},
       dialogFormVisible: false,
@@ -140,6 +142,15 @@ export default {
   },
   created() {
     this.test();
+    if(window.innerWidth<=700){
+      this.mobile=true
+        window.scrollTo({
+        top: 20,
+        behavior: "smooth",
+      });
+    }else{
+      this.mobile =false
+    }
     // console.log(this.$route)
   },
   methods: {
@@ -288,7 +299,10 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss" >
+
+
+
 .article {
   display: flex;
   flex-direction: column;
@@ -353,14 +367,14 @@ export default {
         }
       }
     }
-    .title {
+    .title1 {
       word-wrap: break-word;
       line-height: 30px;
       font-size: 28px;
       font-weight: bold;
       margin: 20px 5px 0 0;
     }
-    .subtitle {
+    .subtitle1 {
       margin: 20px 0;
       display: inline-flex;
       width: 500px;
@@ -435,7 +449,7 @@ export default {
         display: inline-flex;
         flex-direction: row;
         margin-top: 20px;
-        .left {
+        .left1 {
           width: 40px;
           height: 40px;
           border-radius: 50%;
@@ -494,5 +508,37 @@ export default {
 }
 .el-textarea {
   font-size: 14px;
+}
+@media screen and(max-width: 700px) {
+  .article {
+    width: 97vw !important;
+    padding-left: 3vw !important;
+  }
+  .subtitle1{
+    height: 45px !important;
+    display: block !important;
+    
+  }
+  .time{
+    float:none !important;
+    display: block ;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    // width: 100%;
+  }
+  .title1{
+    margin-top: 50px !important;
+    width: 100%;
+  }
+  .ope{
+    width: 100%;
+    position: relative;
+    float: none !important;
+    margin: 0;
+  }
+  .right{
+    min-width: 0 !important;
+    width: 100%;
+  }
 }
 </style>

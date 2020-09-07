@@ -45,6 +45,12 @@ export default {
       
     };
   },
+  created(){
+       window.scrollTo({
+        top: 0,
+        behavior: "smooth",
+      });
+  },
   destroyed(){
     // console.log('我没了')
   },
@@ -58,7 +64,9 @@ export default {
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style lang="scss" scoped>
+<style lang="scss">
+
+
 .left {
   // display: flex;
   width: 694px;
@@ -67,4 +75,23 @@ export default {
     width: 100%;
   }
 }
+@media screen and(max-width: 700px){
+  .left{
+    width: 97vw ;
+    padding-left: 3vw;
+  }
+  .subtitle+div{
+    position: block !important;
+    float: none !important;
+    width:100%;
+  }
+}
+.el-menu-demo.el-menu--horizontal.el-menu{
+  // height: 120px;
+  overflow: hidden;
+}
+.el-menu-demo.el-menu--horizontal.el-menu li{
+  padding: 0 15px;
+}
+
 </style>
