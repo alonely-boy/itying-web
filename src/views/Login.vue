@@ -150,8 +150,10 @@ export default {
           localStorage.userAvatar = data.user.avatar;
           this.$router.push("/");
           this.$message.success("登录成功");
+
         } catch (error) {}
       });
+      this.refreshCode()
     },
   },
 };
