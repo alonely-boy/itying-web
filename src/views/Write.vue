@@ -77,7 +77,7 @@
         <el-form-item label="添加题图">
           <el-upload
             class="avatar-uploader"
-            action="http://81.70.59.91:3000/server/api/upload"
+            action="http://127.0.0.1:3000/server/api/upload"
             :show-file-list="false"
             :on-success="handleAvatarSuccess"
             :before-upload="beforeAvatarUpload"
@@ -260,76 +260,76 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped>
+<style lang="css" scoped>
 .help {
-  position: absolute;
-  right: 10px;
-  top: 5px;
-  color: rgb(33, 145, 179);
-  font-size: 20px;
+	 position: absolute;
+	 right: 10px;
+	 top: 5px;
+	 color: #2191b3;
+	 font-size: 20px;
 }
-.xieyi {
-  position: absolute;
-  left: 10px;
-  top: 5px;
-  color: rgb(33, 145, 179);
-  font-size: 20px;
+ .xieyi {
+	 position: absolute;
+	 left: 10px;
+	 top: 5px;
+	 color: #2191b3;
+	 font-size: 20px;
 }
-.el-tag + .el-tag {
-  margin-left: 10px;
+ .el-tag + .el-tag {
+	 margin-left: 10px;
 }
-.button-new-tag {
-  margin-left: 10px;
-  height: 32px;
-  line-height: 30px;
-  padding-top: 0;
-  padding-bottom: 0;
+ .button-new-tag {
+	 margin-left: 10px;
+	 height: 32px;
+	 line-height: 30px;
+	 padding-top: 0;
+	 padding-bottom: 0;
 }
-.input-new-tag {
-  width: 90px;
-  margin-left: 10px;
-  vertical-align: bottom;
+ .input-new-tag {
+	 width: 90px;
+	 margin-left: 10px;
+	 vertical-align: bottom;
 }
-.content {
-  border-radius: 10px;
-  position: absolute;
-  margin-top: 75px;
-  width: 834px;
-  // height: 300px;
-  background: rgb(255, 255, 255);
-  left: 50%;
-  transform: translate(-50%);
-  .el-form-item {
-    padding: 0 50px 0 20px;
-    margin-top: 35px;
-  }
+ .content {
+	 border-radius: 10px;
+	 position: absolute;
+	 margin-top: 75px;
+	 width: 834px;
+	 background: #fff;
+	 left: 50%;
+	 transform: translate(-50%);
 }
-.avatar-uploader {
-  border: 1px dashed #d9d9d9;
-  border-radius: 6px;
-  width: 178px;
-  cursor: pointer;
-  position: relative;
-  overflow: hidden;
+ .content .el-form-item {
+	 padding: 0 50px 0 20px;
+	 margin-top: 35px;
 }
-.avatar-uploader:hover {
-  border-color: #409eff;
+ .avatar-uploader {
+	 border: 1px dashed #d9d9d9;
+	 border-radius: 6px;
+	 width: 178px;
+	 cursor: pointer;
+	 position: relative;
+	 overflow: hidden;
 }
-.avatar-uploader-icon {
-  font-size: 28px;
-  color: #8c939d;
-  width: 178px;
-  height: 178px;
-  line-height: 178px;
-  text-align: center;
+ .avatar-uploader:hover {
+	 border-color: #409eff;
 }
-.useravatar {
-  max-width: 178px;
-  max-height: 178px;
+ .avatar-uploader-icon {
+	 font-size: 28px;
+	 color: #8c939d;
+	 width: 178px;
+	 height: 178px;
+	 line-height: 178px;
+	 text-align: center;
 }
-@media screen and(max-width:700px){
-  .content{
-    width: 95vw;
-  }
+ .useravatar {
+	 max-width: 178px;
+	 max-height: 178px;
 }
+ @media screen and (max-width: 700px) {
+	 .content {
+		 width: 95vw;
+	}
+}
+ 
 </style>

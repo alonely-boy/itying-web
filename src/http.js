@@ -2,8 +2,7 @@ import axios from 'axios'
 import Vue from 'vue'
 import router from './router'
 const http = axios.create({
-  baseURL:'http://81.70.59.91:3000/server/api'
-  // baseURL:'https://localhost:3000/server/api'
+  baseURL:'http://localhost:3000/server/api'
   // baseURL:process.env.VUE_APP_API_URL || '/server/api',
 })
 

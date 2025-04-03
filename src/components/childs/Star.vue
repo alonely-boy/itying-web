@@ -59,30 +59,30 @@ export default {
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style lang="scss" scoped>
+<style lang="css" scoped>
 .contain {
-  width: 694px;
-  .card {
-    width: 100%;
-  }
-  .aaa{
-    background: url('~@/assets/img/空空如也.jpg');
-    background-size: cover;
-  }
+	 width: 694px;
 }
-.title {
-  font-size: 24px;
-  font-weight: bold;
-  // line-height: 60px;
-  color: orange;
-  padding-bottom: 20px;
-  border-bottom: 1px solid #eee;
+ .contain .card {
+	 width: 100%;
 }
-@media screen and (max-width:700px){
-  .contain{
-    width: 96vw;
-    min-height: 400px;
-    padding-left: 3vw !important;
-  }
+ .contain .aaa {
+	 background: url('~@/assets/img/空空如也.jpg');
+	 background-size: cover;
 }
+ .title {
+	 font-size: 24px;
+	 font-weight: bold;
+	 color: orange;
+	 padding-bottom: 20px;
+	 border-bottom: 1px solid #eee;
+}
+ @media screen and (max-width: 700px) {
+	 .contain {
+		 width: 96vw;
+		 min-height: 400px;
+		 padding-left: 3vw !important;
+	}
+}
+ 
 </style>

@@ -64,34 +64,30 @@ export default {
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style lang="scss">
-
-
+<style lang="css">
 .left {
-  // display: flex;
-  width: 694px;
-  // max-height: 700px;
-  .el-card {
-    width: 100%;
-  }
+	 width: 694px;
 }
-@media screen and(max-width: 700px){
-  .left{
-    width: 97vw ;
-    padding-left: 3vw;
-  }
-  .subtitle+div{
-    position: block !important;
-    float: none !important;
-    width:100%;
-  }
+ .left .el-card {
+	 width: 100%;
 }
-.el-menu-demo.el-menu--horizontal.el-menu{
-  // height: 120px;
-  overflow: hidden;
+ @media screen and (max-width: 700px) {
+	 .left {
+		 width: 97vw;
+		 padding-left: 3vw;
+	}
+	 .subtitle + div {
+		 position: block !important;
+		 float: none !important;
+		 width: 100%;
+	}
 }
-.el-menu-demo.el-menu--horizontal.el-menu li{
-  padding: 0 15px;
+ .el-menu-demo.el-menu--horizontal.el-menu {
+	 overflow: hidden;
 }
+ .el-menu-demo.el-menu--horizontal.el-menu li {
+	 padding: 0 15px;
+}
+ 
 
 </style>

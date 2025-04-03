@@ -119,7 +119,7 @@
         <el-form-item label="头像上传">
           <el-upload
             class="avatar-uploader"
-            action='http://81.70.59.91:3000/server/api/upload'
+            action='http://127.0.0.1:3000/server/api/upload'
             :show-file-list="false"
             :on-success="handleAvatarSuccess"
             :before-upload="beforeAvatarUpload"
@@ -281,116 +281,114 @@ export default {
 </script>
 
 
-<style lang="scss" scoped >
-
-.useravatar{
-  max-width: 178px;
-  max-height: 178px;
+<style lang="css" scoped >
+.useravatar {
+	 max-width: 178px;
+	 max-height: 178px;
 }
-.avatar-uploader  {
-    border: 1px dashed #d9d9d9;
-    border-radius: 6px;
-    width: 178px;
-    cursor: pointer;
-    position: relative;
-    overflow: hidden;
-  }
-  .avatar-uploader:hover {
-    border-color: #409EFF;
-  }
-  .avatar-uploader-icon {
-    font-size: 28px;
-    color: #8c939d;
-    width: 178px;
-    height: 178px;
-    line-height: 178px;
-    text-align: center;
-  }
-  .avatar {
-    width: 178px;
-    height: 178px;
-    display: block;
-  }
-.subtitle {
-  width: 80px;
-  font-size: 22px;
-  font-family: "楷体";
-  background: rgb(255, 255, 79);
-  text-align: center;
-  border-radius: 10px;
+ .avatar-uploader {
+	 border: 1px dashed #d9d9d9;
+	 border-radius: 6px;
+	 width: 178px;
+	 cursor: pointer;
+	 position: relative;
+	 overflow: hidden;
 }
-.navbar {
-  width: 1000px;
-  height: 56px;
-  user-select: none;
-  position: relative;
-  top: 0;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin: 0 auto;
-  color: #8a8a8a;
+ .avatar-uploader:hover {
+	 border-color: #409eff;
 }
-.container {
-  border-radius: 5px;
-  min-width: 1032px;
-  top: 0;
-  position: fixed;
-  height: 56px;
-  width: 100%;
-  background-color: white;
-  z-index: 99;
+ .avatar-uploader-icon {
+	 font-size: 28px;
+	 color: #8c939d;
+	 width: 178px;
+	 height: 178px;
+	 line-height: 178px;
+	 text-align: center;
 }
-#a {
-  background: url('~@/assets/img/艺术字.png');
-  height: 100%;
-  background-size: cover;
-  cursor: pointer;
-  width: 250px;
-  color: rgb(241, 23, 223);
+ .avatar {
+	 width: 178px;
+	 height: 178px;
+	 display: block;
 }
-#search {
-  color: rgb(0, 195, 255);
-   line-height: 40px;
-  width: 250px;
-  overflow: hidden;
-  height: 40px;
-  font-size: 16px;
-  white-space: nowrap;
-  text-overflow: ellipsis;
-  span{
-    font-style: italic;
-  }
-  span:hover{
-    text-decoration: underline;
-  }
-  // background: #eee;
+ .subtitle {
+	 width: 80px;
+	 font-size: 22px;
+	 font-family: "楷体";
+	 background: #ffff4f;
+	 text-align: center;
+	 border-radius: 10px;
 }
-.icon {
+ .navbar {
+	 width: 1000px;
+	 height: 56px;
+	 user-select: none;
+	 position: relative;
+	 top: 0;
+	 display: flex;
+	 justify-content: space-between;
+	 align-items: center;
+	 margin: 0 auto;
+	 color: #8a8a8a;
+}
+ .container {
+	 border-radius: 5px;
+	 min-width: 1032px;
+	 top: 0;
+	 position: fixed;
+	 height: 56px;
+	 width: 100%;
+	 background-color: white;
+	 z-index: 99;
+}
+ #a {
+	 background: url('~@/assets/img/艺术字.png');
+	 height: 100%;
+	 background-size: cover;
+	 cursor: pointer;
+	 width: 250px;
+	 color: #f117df;
+}
+ #search {
+	 color: #00c3ff;
+	 line-height: 40px;
+	 width: 250px;
+	 overflow: hidden;
+	 height: 40px;
+	 font-size: 16px;
+	 white-space: nowrap;
+	 text-overflow: ellipsis;
+}
+ #search span {
+	 font-style: italic;
+}
+ #search span:hover {
+	 text-decoration: underline;
+}
+ .icon {
+	 width: 24px;
+	 height: 24px;
+	 fill: currentcolor;
+	 cursor: pointer;
+}
+ .avatar {
+	 width: 40px;
+	 height: 40px;
+}
+ @media screen and (max-width: 700px) {
+	 .container {
+		 width: 100%;
+		 min-width: 0px;
+	}
+	 .navbar {
+		 width: 100%;
+	}
+	 #search, .subtitle, .aaa {
+		 display: none;
+	}
+	 .navbar {
+		 justify-content: space-around;
+	}
+}
  
-  width: 24px;
-  height: 24px;
-  fill: currentcolor;
-  cursor: pointer;
-}
-.avatar {
-  width: 40px;
-  height: 40px;
-}
-@media screen and(max-width: 700px){
-  .container{
-    width: 100%;
-    min-width: 0px;
-  }
-  .navbar{
-    
-    width: 100%;
-  }
-  #search,.subtitle,.aaa{
-    display: none;
-  }
-  .navbar{
-    justify-content: space-around;
-  }
-}
+
 </style>

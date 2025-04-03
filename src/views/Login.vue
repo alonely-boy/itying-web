@@ -160,73 +160,70 @@ export default {
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style lang="scss" scoped>
-.login-code{
-  display: inline-block;
-  transform: translate(0,10px);
+<style lang="css" scoped>
+.login-code {
+	 display: inline-block;
+	 transform: translate(0, 10px);
 }
-.code{
-  // height: 30px;
-  width: 200px;
-  display: inline-block;
+ .code {
+	 width: 200px;
+	 display: inline-block;
 }
-
-.youke {
-  position: absolute;
-  top: -28px;
+ .youke {
+	 position: absolute;
+	 top: -28px;
 }
-.content {
-  position: absolute;
-  top: -170px;
-  width: 100%;
-  height: 100px;
-  line-height: 100px;
-  background-image: url(~@/assets/img/艺术欢迎.png);
-  background-size: cover;
+ .content {
+	 position: absolute;
+	 top: -170px;
+	 width: 100%;
+	 height: 100px;
+	 line-height: 100px;
+	 background-image: url(~@/assets/img/艺术欢迎.png);
+	 background-size: cover;
 }
-.container {
-  .btn {
-    position: absolute;
-    top: -28px;
-    right: 0;
-    height: 100px;
-  }
-  height: 370px;
-  width: 450px;
-  position: absolute;
-  // background-image: url(~@/assets/img/樱花背景.jpg);
-  background: #ccc;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  border-radius: 5px;
-  .loginForm {
-    position: absolute;
-    bottom: 0;
-    color: black;
-    width: 100%;
-    padding: 0 30px;
-  }
-  .icon {
-    user-select: none;
-    position: absolute;
-    width: 130px;
-    height: 130px;
-    transform: translate(-50%, -50%);
-    border-radius: 50%;
-    padding: 5px;
-    background: white;
-    left: 50%;
-  }
+ .container {
+	 height: 370px;
+	 width: 450px;
+	 position: absolute;
+	 background: #ccc;
+	 left: 50%;
+	 top: 50%;
+	 transform: translate(-50%, -50%);
+	 border-radius: 5px;
 }
-@media screen and(max-width:700px){
-  .container{
-    width: 100% !important;
-    top: 45vh;
-
-  }
-  .content{
-    display: none;
-  }
+ .container .btn {
+	 position: absolute;
+	 top: -28px;
+	 right: 0;
+	 height: 100px;
 }
+ .container .loginForm {
+	 position: absolute;
+	 bottom: 0;
+	 color: black;
+	 width: 100%;
+	 padding: 0 30px;
+}
+ .container .icon {
+	 user-select: none;
+	 position: absolute;
+	 width: 130px;
+	 height: 130px;
+	 transform: translate(-50%, -50%);
+	 border-radius: 50%;
+	 padding: 5px;
+	 background: white;
+	 left: 50%;
+}
+ @media screen and (max-width: 700px) {
+	 .container {
+		 width: 100% !important;
+		 top: 45vh;
+	}
+	 .content {
+		 display: none;
+	}
+}
+ 
 </style>

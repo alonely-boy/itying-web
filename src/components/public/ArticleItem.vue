@@ -87,141 +87,129 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped>
+<style lang="css" scoped>
 .contain1 {
-  // overflow: hidden;
-  width: 100%;
-  // position: relative;
+	 width: 100%;
 }
-.container1 {
-  word-break: normal;
-
-  width: 96%;
-  margin-left: 2%;
-  margin-right: 2%;
-  margin-top: 15px;
-  padding-bottom: 10px;
-  border-bottom: 1px solid #ddd;
-  word-wrap: break-word;
-  // position: absolute;
-  .title {
-    font-size: 18px;
-    font-weight: bold;
-    line-height: 28px;
-    cursor: pointer;
-  }
-  .title:hover{
-    background: #eee;
-  }
-  .picture {
-    float: right;
-    cursor: pointer;
-    max-width: 110px; //一个max属性就可以控制内部图片自动缩放，学到了
-    img {
-      max-height: 150px;
-    }
-    margin-left: 20px;
-  }
-  .content {
-    cursor: pointer;
-    overflow: hidden;
-    font-size: 13px;
-    // line-height: 20px;
-    color: #888;
-    text-indent: 2em;
-    height: 52px;
-    display: -webkit-box;
-    -webkit-line-clamp: 3; /* 限制在一个块元素显示的文本的行数 */
-    -webkit-box-orient: vertical; /* 垂直排列 */
-    // text-overflow: ellipsis;
-    margin-top: 6px;
-    margin-bottom: 8px;
-  }
-  .content:hover{
-    background: #eee;
-    // border: 1px solid black;
-  }
-  .footer {
-    display: inline-flex;
-    font-size: 13px;
-    align-items: center;
-    justify-content: space-between;
-    width: 100%;
-    height: 33.6px;
-    line-height: 33.6px;
-    .agree {
-      cursor: pointer;
-      color: #0084ff;
-      width: 80px;
-      font-weight: bold;
-      // height: 30px;
-      vertical-align: middle;
-      line-height: 30px;
-      // text-align: center;
-      // word-wrap: none;
-      white-space: nowrap;
-      color: #0e932e;
-      .icon {
-        // margin-top: 5px;
-        transform: translate(0, 5px);
-        display: inline-block;
-        width: 24px;
-        height: 24px;
-        border-radius: 50%;
-        margin-right: 5px;
-        background-color: rgba(1, 126, 102, 0.08);
-        fill: #0e932e;
-      }
-      .icon:hover {
-        fill: white;
-        background-color: green;
-        color: white;
-      }
-    }
-    .category {
-      // cursor: pointer;
-      height: 20px;
-      line-height: 20px;
-      width: 60px;
-      text-align: center;
-      color: white;
-      background: rgb(25, 214, 214);
-      border-radius: 2px;
-      user-select: none;
-      transform: translate(0, 3px);
-    }
-    .category:hover {
-      background: rgba(47, 0, 255, 0.5);
-    }
-    .writer {
-      width: 150px;
-
-      // background: green;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-    }
-    .writer:hover {
-      text-decoration: underline;
-    }
-
-    .time {
-      width: 200px;
-       white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-    }
-  }
+ .container1 {
+	 word-break: normal;
+	 width: 96%;
+	 margin-left: 2%;
+	 margin-right: 2%;
+	 margin-top: 15px;
+	 padding-bottom: 10px;
+	 border-bottom: 1px solid #ddd;
+	 word-wrap: break-word;
 }
-@media screen and(max-width:800px){
-  .picture,.category{
-    display: none;
-  }
-  .footer{
-    text-align: center;
-  }
-  .time{
-    width: 100px !important;
-  }
+ .container1 .title {
+	 font-size: 18px;
+	 font-weight: bold;
+	 line-height: 28px;
+	 cursor: pointer;
 }
+ .container1 .title:hover {
+	 background: #eee;
+}
+ .container1 .picture {
+	 float: right;
+	 cursor: pointer;
+	 max-width: 110px;
+	 margin-left: 20px;
+}
+ .container1 .picture img {
+	 max-height: 150px;
+}
+ .container1 .content {
+	 cursor: pointer;
+	 overflow: hidden;
+	 font-size: 13px;
+	 color: #888;
+	 text-indent: 2em;
+	 height: 52px;
+	 display: -webkit-box;
+	 -webkit-line-clamp: 3;
+	/* 限制在一个块元素显示的文本的行数 */
+	 -webkit-box-orient: vertical;
+	/* 垂直排列 */
+	 margin-top: 6px;
+	 margin-bottom: 8px;
+}
+ .container1 .content:hover {
+	 background: #eee;
+}
+ .container1 .footer {
+	 display: inline-flex;
+	 font-size: 13px;
+	 align-items: center;
+	 justify-content: space-between;
+	 width: 100%;
+	 height: 33.6px;
+	 line-height: 33.6px;
+}
+ .container1 .footer .agree {
+	 cursor: pointer;
+	 color: #0084ff;
+	 width: 80px;
+	 font-weight: bold;
+	 vertical-align: middle;
+	 line-height: 30px;
+	 white-space: nowrap;
+	 color: #0e932e;
+}
+ .container1 .footer .agree .icon {
+	 transform: translate(0, 5px);
+	 display: inline-block;
+	 width: 24px;
+	 height: 24px;
+	 border-radius: 50%;
+	 margin-right: 5px;
+	 background-color: rgba(1, 126, 102, 0.08);
+	 fill: #0e932e;
+}
+ .container1 .footer .agree .icon:hover {
+	 fill: white;
+	 background-color: green;
+	 color: white;
+}
+ .container1 .footer .category {
+	 height: 20px;
+	 line-height: 20px;
+	 width: 60px;
+	 text-align: center;
+	 color: white;
+	 background: #19d6d6;
+	 border-radius: 2px;
+	 user-select: none;
+	 transform: translate(0, 3px);
+}
+ .container1 .footer .category:hover {
+	 background: rgba(47, 0, 255, 0.5);
+}
+ .container1 .footer .writer {
+	 width: 150px;
+	 white-space: nowrap;
+	 overflow: hidden;
+	 text-overflow: ellipsis;
+}
+ .container1 .footer .writer:hover {
+	 text-decoration: underline;
+}
+ .container1 .footer .time {
+	 width: 200px;
+	 white-space: nowrap;
+	 overflow: hidden;
+	 text-overflow: ellipsis;
+}
+ @media screen and (max-width: 800px) {
+	 .picture, .category {
+		 display: none;
+	}
+	 .footer {
+		 text-align: center;
+	}
+	 .time {
+		 width: 100px !important;
+	}
+}
+ 
 </style>

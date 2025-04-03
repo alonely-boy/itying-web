@@ -242,87 +242,82 @@ export default {
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style lang="scss" scoped>
-.ad{
-  .beian{
-    color:#8590a6;
-    font-size: 14px;
-    cursor:default
-  }
-  border: 1px solid #eee;
-  position: sticky;
-  top: 60px;
-  height: 204px;
-  width: 100%;
-  cursor: pointer;
-  img{
-   height: 100%;
-   width: 100%;
-  }
-  .text{
-    z-index: 100;
-    font-size: 14px;
-    text-align: center;
-    background: rgba(0,0,0,0.5);
-    width: 40px;
-    position: absolute;
-    top: 0;
-    right: 2px;
-    color: white;
-  }
+<style lang="css" scoped>
+.ad {
+	 border: 1px solid #eee;
+	 position: sticky;
+	 top: 60px;
+	 height: 204px;
+	 width: 100%;
+	 cursor: pointer;
 }
-.el-icon-s-order{
-  cursor: pointer;
+ .ad .beian {
+	 color: #8590a6;
+	 font-size: 14px;
+	 cursor: default;
 }
-.write-center{
-  div{
-    float: left;
-    text-align: center;
-    width: 50%;
-    font-size: 13px;
-    color: #aaa;
-    line-height: 26px;
-  }
+ .ad img {
+	 height: 100%;
+	 width: 100%;
 }
-.right {
-  display: flex;
-  position: relative;
-  width: 296px;
-  // height: 700px;
-  flex-direction: column;
-  .el-card {
-    width: 100%;
-    height: 140px;
-    margin-bottom: 10px;
-  }
-  .icon-container{
-    width: 100%;
-    height: 100px;
-    // background: yellow;
-    display: flex;
-    justify-content: space-between;
-    .icon-content{
-      display: flex;
-      // flex: 1;
-      width: 45px;
-      // background: green;
-      text-align: center;
-      flex-direction: column;
-      font-size: 12px;
-      cursor: pointer;
-      svg{
-        display: block;
-        fill: currentcolor;
-        color:rgb(32, 207, 91)
-      }
-    }
-  }
+ .ad .text {
+	 z-index: 100;
+	 font-size: 14px;
+	 text-align: center;
+	 background: rgba(0, 0, 0, 0.5);
+	 width: 40px;
+	 position: absolute;
+	 top: 0;
+	 right: 2px;
+	 color: white;
 }
-@media screen and(max-width:700px){
-  .right{
-    margin-top: 15px;
-    width: 97vw;
-    padding-left: 3vw;
-  }
+ .el-icon-s-order {
+	 cursor: pointer;
 }
+ .write-center div {
+	 float: left;
+	 text-align: center;
+	 width: 50%;
+	 font-size: 13px;
+	 color: #aaa;
+	 line-height: 26px;
+}
+ .right {
+	 display: flex;
+	 position: relative;
+	 width: 296px;
+	 flex-direction: column;
+}
+ .right .el-card {
+	 width: 100%;
+	 height: 140px;
+	 margin-bottom: 10px;
+}
+ .right .icon-container {
+	 width: 100%;
+	 height: 100px;
+	 display: flex;
+	 justify-content: space-between;
+}
+ .right .icon-container .icon-content {
+	 display: flex;
+	 width: 45px;
+	 text-align: center;
+	 flex-direction: column;
+	 font-size: 12px;
+	 cursor: pointer;
+}
+ .right .icon-container .icon-content svg {
+	 display: block;
+	 fill: currentcolor;
+	 color: #20cf5b;
+}
+ @media screen and (max-width: 700px) {
+	 .right {
+		 margin-top: 15px;
+		 width: 97vw;
+		 padding-left: 3vw;
+	}
+}
+ 
 </style>
